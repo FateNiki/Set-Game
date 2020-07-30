@@ -14,6 +14,8 @@ struct Card {
     private(set) var fill: Fill
     private(set) var count: Count
     
+    
+    
     enum Color {
         case red
         case blue
@@ -37,5 +39,4 @@ struct Card {
         case two = 2
         case three = 3
     }
-    
 }
