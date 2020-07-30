@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct Card {
-    private(set) var color: Color
-    private(set) var shape: Shape
-    private(set) var fill: Fill
-    private(set) var count: Count
+struct Card: Identifiable {
+    let color: Color
+    let shape: Shape
+    let fill: Fill
+    let count: Count
     
+    public var id: String { "\(color)\(shape)\(fill)\(count)" }
     
     
     enum Color: CaseIterable {

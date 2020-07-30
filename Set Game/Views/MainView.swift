@@ -9,8 +9,17 @@
 import SwiftUI
 
 struct MainView: View {
+    let viewModel = SetGameViewModel()
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Grid(viewModel.cards) { _ in
+                RoundedRectangle(cornerRadius: 3).fill()
+            }
+            Button(action: {}) {
+                Text("New Game")
+            }
+        }.padding()
     }
 }
 
