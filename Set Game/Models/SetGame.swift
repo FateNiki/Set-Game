@@ -16,25 +16,25 @@ struct Card {
     
     
     
-    enum Color {
+    enum Color: CaseIterable {
         case red
         case blue
         case green
     }
     
-    enum Shape {
+    enum Shape: CaseIterable {
         case rhomb
         case ellipse
         case quadrate
     }
     
-    enum Fill {
+    enum Fill: CaseIterable {
         case empty
         case full
         case hatch
     }
     
-    enum Count: Int {
+    enum Count: Int, CaseIterable {
         case one = 1
         case two = 2
         case three = 3
