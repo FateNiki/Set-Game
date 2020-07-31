@@ -43,7 +43,8 @@ struct Card: Identifiable {
 }
 
 struct SetGame {
-    static let defaultCountOfCards: Int = 12
+    static let startCountOfCards: Int = 12
+    static let additionCountOfCards: Int = 3
     
     static var allCards: Array<Card> {
         var cards = Array<Card>()
@@ -62,9 +63,20 @@ struct SetGame {
     private(set) var deckCards: Array<Card> = []
     private(set) var tableCards: Array<Card> = []
     
+    private mutating func pushCards(countOfCards: Int) -> Void {
+        let count = min(countOfCards, deckCards.count)
+        tableCards.append(contentsOf: deckCards.prefix(count))
+        deckCards.removeFirst(count)
+    }
+    
+    public mutating func pushAdditionCards() {
+        pushCards(countOfCards: Self.additionCountOfCards)
+
+    }
+    
     public mutating func startGame() -> Void {
         deckCards = Self.allCards
-        tableCards = Array(deckCards.prefix(Self.defaultCountOfCards))
-        deckCards.removeFirst(Self.defaultCountOfCards)
+        tableCards = []
+        pushCards(countOfCards: Self.startCountOfCards)
     }
 }

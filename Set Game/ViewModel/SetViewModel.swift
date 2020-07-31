@@ -17,4 +17,8 @@ class SetGameViewModel: ObservableObject {
     func startGame() -> Void {
         game.startGame()
     }
+    
+    func pushAdditionCards() -> Void {
+        game.pushAdditionCards()
+    }
 }

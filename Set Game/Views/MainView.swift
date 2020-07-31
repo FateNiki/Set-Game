@@ -20,7 +20,7 @@ struct MainView: View {
                 
                 HStack {
                     Button(action: {
-                        self.viewModel.startGame()
+                        self.viewModel.pushAdditionCards()
                     }) {
                         Text("Add 3 cards")
                     }
