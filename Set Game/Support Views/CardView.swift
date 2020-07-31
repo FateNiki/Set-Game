@@ -25,7 +25,7 @@ struct CardView: View {
             }
         }
             .padding(self.paddingLength(for: size))
-            .cardify()
+            .cardify(card)
     }
     
     //MARK: - Drawing Constants
