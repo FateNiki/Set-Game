@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CardShape: View {
     let card: Card
+    let lineWidth: CGFloat
     
     var body: some View {
         var shape: AnyView
@@ -62,8 +63,6 @@ struct CardShape: View {
     
     
     //MARK: - Drawing Constants
-    private let lineWidth: CGFloat = 5
-    
     private var color: Color {
         switch card.color {
             case .blue: return .blue
@@ -75,6 +74,6 @@ struct CardShape: View {
 
 struct CardShape_Previews: PreviewProvider {
     static var previews: some View {
-        CardShape(card: Card(color: .blue, shape: .quadrate, fill: .hatch, count: .one)).preferredColorScheme(.dark)
+        CardShape(card: Card(color: .blue, shape: .quadrate, fill: .hatch, count: .one), lineWidth: 2).preferredColorScheme(.dark)
     }
 }

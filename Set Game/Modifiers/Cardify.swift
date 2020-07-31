@@ -22,7 +22,7 @@ struct Cardify: ViewModifier {
     
     
     private let cornerRadius: CGFloat = 15.0
-    private let lineWidth: CGFloat = 3.0
+    private let lineWidth: CGFloat = 2.0
 }
 
 extension View {

@@ -19,20 +19,29 @@ struct CardView: View {
     
     @ViewBuilder
     private func body(for size: CGSize) -> some View {
-        Text(card.id)
-            .font(Font.system(size: fontSize(for: size)))
+        VStack {
+            ForEach(0..<card.count.rawValue) { _ in
+                CardShape(card: self.card, lineWidth: self.lineWidth(for: size))
+            }
+        }
+            .padding(self.paddingLength(for: size))
             .cardify()
     }
     
     //MARK: - Drawing Constants
-    private func fontSize(for size: CGSize) -> CGFloat {
-        min(size.width, size.height) * 0.05
+    private func paddingLength(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * 0.15
+    }
+    private func lineWidth(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * 0.02
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: SetGame.allCards[0])
+        ForEach(SetGame.allCards[0..<5]) { card in
+            CardView(card: card)
+        }
             .previewLayout(.fixed(width: 300, height: 400))
     }
 }
