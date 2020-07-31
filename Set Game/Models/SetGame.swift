@@ -70,7 +70,7 @@ struct SetGame {
     //MARK: - Cards calc properties
     private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
     public var readyForChecking: Bool { selectedCards.count == 3 }
-    public var allowForPushing: Bool { tableCards.count < 21 }
+    public var allowForPushing: Bool { tableCards.count < 21 && deckCards.count > 0 }
 
     
     //MARK: - Cards methods
