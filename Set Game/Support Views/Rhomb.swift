@@ -29,7 +29,8 @@ struct Rhomb: Shape {
             CGPoint(x: center.x - halfOfWidth, y: center.y),
             CGPoint(x: center.x, y: center.y + halfOfHeight),
             CGPoint(x: center.x + halfOfWidth, y: center.y),
-            start
+            start,
+            CGPoint(x: center.x - halfOfWidth, y: center.y),
         ])
         return path
     }
