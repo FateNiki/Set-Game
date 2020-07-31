@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct Rhomb: Shape {
+    
     func path(in rect: CGRect) -> Path {
         rhomb(in: rect)
     }
@@ -23,8 +24,8 @@ struct Rhomb: Shape {
         )
         
         var path = Path()
-        path.move(to: start)
         path.addLines([
+            start,
             CGPoint(x: center.x - halfOfWidth, y: center.y),
             CGPoint(x: center.x, y: center.y + halfOfHeight),
             CGPoint(x: center.x + halfOfWidth, y: center.y),
@@ -38,8 +39,7 @@ struct Rhomb: Shape {
 
 struct Rhomb_Previews: PreviewProvider {
     static var previews: some View {
-        Rhomb()
-            .padding()
+        Rhomb().overlay(Rhomb().stroke(Color.red))
             .previewLayout(.fixed(width: 300, height: 200))
     }
 }
