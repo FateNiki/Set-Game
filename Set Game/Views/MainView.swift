@@ -22,7 +22,7 @@ struct MainView: View {
                     }
                 }
                 
-                HStack {
+                HStack(alignment: .center) {
                     Button(action: {
                         withAnimation {
                               self.viewModel.pushAdditionCards()
@@ -30,6 +30,8 @@ struct MainView: View {
                     }) {
                         Text("Add 3 cards")
                     }
+                    Spacer()
+                    Text("Score: \(self.viewModel.score)")
                     Spacer()
                     Button(action: {
                         withAnimation {

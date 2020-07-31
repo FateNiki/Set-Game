@@ -12,6 +12,7 @@ class SetGameViewModel: ObservableObject {
     
     //MARK: - Access to the Model
     var tableCards: Array<Card> { game.tableCards }
+    var score: Int { game.score }
     var readyForChecking: Bool { game.readyForChecking }
     
     //MARK: - Intent(s)

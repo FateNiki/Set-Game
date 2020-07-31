@@ -65,6 +65,7 @@ struct SetGame {
     //MARK: - Cards properties
     private(set) var deckCards: Array<Card> = []
     private(set) var tableCards: Array<Card> = []
+    private(set) var score: Int = 0
     
     //MARK: - Cards calc properties
     private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
@@ -92,6 +93,7 @@ struct SetGame {
     public mutating func startGame() -> Void {
         deckCards = Self.allCards
         tableCards = []
+        score = 0
         pushCards(countOfCards: Self.startCountOfCards)
     }
     
@@ -109,8 +111,9 @@ struct SetGame {
     public mutating func checkForSet() -> Bool {
         let isSet = selectedCards.isSet()
         if (isSet) {
+            score += 1
             tableCards = tableCards.filter { !$0.isSelected }
-            if tableCards.count < 12 { pushAdditionCards() }            
+            if tableCards.count < 12 { pushAdditionCards() }
         } else {
             clearSelect()
         }
