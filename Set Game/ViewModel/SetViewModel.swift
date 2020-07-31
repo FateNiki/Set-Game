@@ -13,7 +13,6 @@ class SetGameViewModel: ObservableObject {
     //MARK: - Access to the Model
     var tableCards: Array<Card> { game.tableCards }
     var score: Int { game.score }
-    var selectedCardsIsSet: Bool { game.selectedCardsIsSet }
     var allowForPushing: Bool { game.allowForPushing }
     
     //MARK: - Intent(s)
