@@ -68,6 +68,7 @@ struct SetGame {
     
     //MARK: - Cards calc properties
     private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
+    public var readyForChecking: Bool { selectedCards.count == 3 }
 
     
     //MARK: - Cards methods
@@ -75,6 +76,12 @@ struct SetGame {
         let count = min(countOfCards, deckCards.count)
         tableCards.append(contentsOf: deckCards.prefix(count))
         deckCards.removeFirst(count)
+    }
+    
+    private mutating func clearSelect() -> Void {
+        tableCards.indices.forEach { index in
+            tableCards[index].isSelected = false
+        }
     }
     
     public mutating func pushAdditionCards() {
@@ -88,16 +95,25 @@ struct SetGame {
         pushCards(countOfCards: Self.startCountOfCards)
     }
     
-    mutating func choose(card: Card) -> Void {
+    public mutating func choose(card: Card) -> Void {
         if let cardIndex = tableCards.firstIndex(matching: card) {
             if selectedCards.count == 3 && !card.isSelected {
-                tableCards.indices.forEach { index in
-                    tableCards[index].isSelected = false
-                }
+                clearSelect()
                 tableCards[cardIndex].isSelected = true
             } else {
                 tableCards[cardIndex].isSelected.toggle()
             }
         }
+    }
+    
+    public mutating func checkForSet() -> Bool {
+        let isSet = selectedCards.isSet()
+        if (isSet) {
+            tableCards = tableCards.filter { !$0.isSelected }
+            if tableCards.count < 12 { pushAdditionCards() }            
+        } else {
+            clearSelect()
+        }
+        return isSet
     }
 }

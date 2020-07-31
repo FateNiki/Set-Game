@@ -31,9 +31,13 @@ struct MainView: View {
                         Text("Add 3 cards")
                     }
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: {
+                        withAnimation {
+                            self.viewModel.checkForSet()
+                        }
+                    }) {
                         Text("Set")
-                    }.disabled(true)
+                    }.disabled(!self.viewModel.readyForChecking)
                 }
             }
             .navigationBarTitle("Set Game", displayMode: .inline)
