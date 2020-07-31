@@ -44,7 +44,7 @@ struct MainView: View {
             })
             .padding()
             .onAppear {
-                withAnimation {
+                withAnimation(Animation.easeOut.delay(0.5)) {
                     self.viewModel.startGame()
                 }
             }
