@@ -13,7 +13,7 @@ class SetGameViewModel: ObservableObject {
     //MARK: - Access to the Model
     var tableCards: Array<Card> { game.tableCards }
     var score: Int { game.score }
-    var readyForChecking: Bool { game.readyForChecking }
+    var selectedCardsIsSet: Bool { game.selectedCardsIsSet }
     var allowForPushing: Bool { game.allowForPushing }
     
     //MARK: - Intent(s)
@@ -27,9 +27,5 @@ class SetGameViewModel: ObservableObject {
     
     func choose(card: Card) -> Void {
         game.choose(card: card)
-    }
-    
-    func checkForSet() -> Void {
-        let _ = game.checkForSet()
     }
 }

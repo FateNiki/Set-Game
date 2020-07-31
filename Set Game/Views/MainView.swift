@@ -32,14 +32,6 @@ struct MainView: View {
                     }.disabled(!self.viewModel.allowForPushing)
                     Spacer()
                     Text("Score: \(self.viewModel.score)")
-                    Spacer()
-                    Button(action: {
-                        withAnimation {
-                            self.viewModel.checkForSet()
-                        }
-                    }) {
-                        Text("Set")
-                    }.disabled(!self.viewModel.readyForChecking)
                 }
             }
             .navigationBarTitle("Set Game", displayMode: .inline)

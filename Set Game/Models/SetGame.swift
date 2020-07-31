@@ -16,6 +16,7 @@ struct Card: Identifiable {
     
     var id: String { "\(color)_\(shape)_\(fill)_\(count)" }
     var isSelected: Bool = false
+    var isMatching: Bool?
     
     enum Color: CaseIterable {
         case red
@@ -69,7 +70,7 @@ struct SetGame {
     
     //MARK: - Cards calc properties
     private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
-    public var readyForChecking: Bool { selectedCards.count == 3 }
+    public var selectedCardsIsSet: Bool { selectedCards.isSet() }
     public var allowForPushing: Bool { tableCards.count < 21 && deckCards.count > 0 }
 
     
@@ -83,9 +84,23 @@ struct SetGame {
     }
     
     private mutating func clearSelect() -> Void {
+        tableCards = tableCards.filter { $0.isMatching != true }
         tableCards.indices.forEach { index in
             tableCards[index].isSelected = false
+            tableCards[index].isMatching = nil
         }
+        if tableCards.count < 12 { pushAdditionCards() }
+    }
+    
+    private mutating func checkForSet() -> Void {
+        let isSet = selectedCards.isSet()
+        tableCards.indices.forEach { index in
+            if tableCards[index].isSelected {
+                tableCards[index].isMatching = isSet
+            }
+        }
+        
+        if isSet { score += 1 }
     }
     
     public mutating func pushAdditionCards() {
@@ -107,18 +122,10 @@ struct SetGame {
             } else {
                 tableCards[cardIndex].isSelected.toggle()
             }
+            
+            if selectedCards.count == 3 {
+                checkForSet()
+            }
         }
-    }
-    
-    public mutating func checkForSet() -> Bool {
-        let isSet = selectedCards.isSet()
-        if (isSet) {
-            score += 1
-            tableCards = tableCards.filter { !$0.isSelected }
-            if tableCards.count < 12 { pushAdditionCards() }
-        } else {
-            clearSelect()
-        }
-        return isSet
     }
 }
