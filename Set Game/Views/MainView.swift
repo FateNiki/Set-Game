@@ -44,7 +44,7 @@ struct MainView: View {
         }
         .navigationBarTitle("Set Game", displayMode: .inline)
         .navigationBarItems(trailing: Button (action: {
-            withAnimation(Animation.easeInOut(duration: 3)) {
+            withAnimation {
                 self.viewModel.startGame()
             }
         }) {
@@ -52,7 +52,7 @@ struct MainView: View {
         })
         .padding()
         .onAppear {
-            withAnimation(Animation.easeInOut(duration: 3)) {
+            withAnimation {
                 self.viewModel.startGame()
             }
         }
