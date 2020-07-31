@@ -41,3 +41,30 @@ struct Card: Identifiable {
         case three = 3
     }
 }
+
+struct SetGame {
+    static let defaultCountOfCards: Int = 12
+    
+    static var allCards: Array<Card> {
+        var cards = Array<Card>()
+        for color in Card.Color.allCases {
+            for shape in Card.Shape.allCases {
+                for fill in Card.Fill.allCases {
+                    for count in Card.Count.allCases {
+                        cards.append(.init(color: color, shape: shape, fill: fill, count: count))
+                    }
+                }
+            }
+        }
+        return cards.shuffled()
+    }
+    
+    private(set) var deckCards: Array<Card> = []
+    private(set) var tableCards: Array<Card> = []
+    
+    public mutating func startGame() -> Void {
+        deckCards = Self.allCards
+        tableCards = Array(deckCards.prefix(Self.defaultCountOfCards))
+        deckCards.removeFirst(Self.defaultCountOfCards)
+    }
+}

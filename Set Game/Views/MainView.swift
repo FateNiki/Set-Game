@@ -9,14 +9,16 @@
 import SwiftUI
 
 struct MainView: View {
-    let viewModel = SetGameViewModel()
+    @ObservedObject var viewModel: SetGameViewModel
     
     var body: some View {
         VStack {
-            Grid(viewModel.cards) { _ in
+            Grid(viewModel.tableCards) { _ in
                 RoundedRectangle(cornerRadius: 3).fill()
             }
-            Button(action: {}) {
+            Button(action: {
+                self.viewModel.startGame()
+            }) {
                 Text("New Game")
             }
         }.padding()
@@ -25,6 +27,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(viewModel: SetGameViewModel())
     }
 }

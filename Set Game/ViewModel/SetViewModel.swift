@@ -5,26 +5,16 @@
 //  Created by Алексей Никитин on 31.07.2020.
 //  Copyright © 2020 Aleksey Nikitin. All rights reserved.
 //
+import SwiftUI
 
-class SetGameViewModel {
-    // TODO Перенести в модель
-    static private func generateAllCards() -> Array<Card> {
-        var cards = Array<Card>()
-        for color in Card.Color.allCases {
-            for shape in Card.Shape.allCases {
-                for fill in Card.Fill.allCases {
-                    for count in Card.Count.allCases {
-                        cards.append(.init(color: color, shape: shape, fill: fill, count: count))
-                    }
-                }
-            }
-        }
-        return cards
-    }
+class SetGameViewModel: ObservableObject {
+    @Published private var game = SetGame()
     
-    var cards: Array<Card>
+    //MARK: - Access to the Model
+    var tableCards: Array<Card> { game.tableCards }
     
-    init() {
-        cards = Self.generateAllCards()
+    //MARK: - Intent(s)
+    func startGame() -> Void {
+        game.startGame()
     }
 }
