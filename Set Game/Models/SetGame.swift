@@ -90,7 +90,7 @@ struct SetGame {
             tableCards[index].isSelected = false
             tableCards[index].isMatching = nil
         }
-        if tableCards.count < 12 { pushAdditionCards() }
+        if tableCards.count < 12 { pushCards(countOfCards: Self.additionCountOfCards) }
     }
     
     private mutating func checkForSet() -> Void {
