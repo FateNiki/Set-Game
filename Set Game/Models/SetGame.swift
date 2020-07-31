@@ -119,7 +119,7 @@ struct SetGame {
     }
     
     public mutating func choose(card: Card) -> Void {
-        if selectedCards.count == 3 && !card.isSelected {
+        if selectedCards.count == 3 {
             clearSelect()
         }
         if let cardIndex = tableCards.firstIndex(matching: card) {
