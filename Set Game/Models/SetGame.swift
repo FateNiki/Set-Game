@@ -70,10 +70,13 @@ struct SetGame {
     //MARK: - Cards calc properties
     private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
     public var readyForChecking: Bool { selectedCards.count == 3 }
+    public var allowForPushing: Bool { tableCards.count < 21 }
 
     
     //MARK: - Cards methods
     private mutating func pushCards(countOfCards: Int) -> Void {
+        guard allowForPushing else { return }
+        
         let count = min(countOfCards, deckCards.count)
         tableCards.append(contentsOf: deckCards.prefix(count))
         deckCards.removeFirst(count)
@@ -87,7 +90,6 @@ struct SetGame {
     
     public mutating func pushAdditionCards() {
         pushCards(countOfCards: Self.additionCountOfCards)
-
     }
     
     public mutating func startGame() -> Void {

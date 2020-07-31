@@ -29,7 +29,7 @@ struct MainView: View {
                         }
                     }) {
                         Text("Add 3 cards")
-                    }
+                    }.disabled(!self.viewModel.allowForPushing)
                     Spacer()
                     Text("Score: \(self.viewModel.score)")
                     Spacer()

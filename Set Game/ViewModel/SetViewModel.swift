@@ -14,6 +14,7 @@ class SetGameViewModel: ObservableObject {
     var tableCards: Array<Card> { game.tableCards }
     var score: Int { game.score }
     var readyForChecking: Bool { game.readyForChecking }
+    var allowForPushing: Bool { game.allowForPushing }
     
     //MARK: - Intent(s)
     func startGame() -> Void {
