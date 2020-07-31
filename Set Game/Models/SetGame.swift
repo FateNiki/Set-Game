@@ -14,7 +14,7 @@ struct Card: Identifiable {
     let fill: Fill
     let count: Count
     
-    public var id: String { "\(color)\(shape)\(fill)\(count)" }
+    public var id: String { "\(color)_\(shape)_\(fill)_\(count)" }
     
     
     enum Color: CaseIterable {

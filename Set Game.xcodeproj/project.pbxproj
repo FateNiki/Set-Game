@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B006F2424D4111500055042 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B006F2324D4111500055042 /* CardView.swift */; };
+		5B006F2724D4123C00055042 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B006F2624D4123C00055042 /* Cardify.swift */; };
 		5BB058B824D36D3B0064D895 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB058B724D36D3A0064D895 /* SetGame.swift */; };
 		5BB058BA24D3727D0064D895 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB058B924D3727D0064D895 /* GridLayout.swift */; };
 		5BB058BC24D372AA0064D895 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB058BB24D372AA0064D895 /* Grid.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B006F2324D4111500055042 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5B006F2624D4123C00055042 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
 		5BB058B724D36D3A0064D895 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		5BB058B924D3727D0064D895 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		5BB058BB24D372AA0064D895 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -48,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B006F2524D4122D00055042 /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				5B006F2624D4123C00055042 /* Cardify.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		5BB058B324D36CAB0064D895 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +89,7 @@
 			children = (
 				5BB058B924D3727D0064D895 /* GridLayout.swift */,
 				5BB058BB24D372AA0064D895 /* Grid.swift */,
+				5B006F2324D4111500055042 /* CardView.swift */,
 			);
 			path = "Support Views";
 			sourceTree = "<group>";
@@ -117,6 +130,7 @@
 		C94978AC79E96AC8372F35EE /* Set Game */ = {
 			isa = PBXGroup;
 			children = (
+				5B006F2524D4122D00055042 /* Modifiers */,
 				5BB058BD24D3731D0064D895 /* Extension */,
 				5BB058B624D36CF40064D895 /* Support Views */,
 				5BB058B524D36CBD0064D895 /* Views */,
@@ -198,12 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9497B0E99F2B9621A91426B /* AppDelegate.swift in Sources */,
+				5B006F2424D4111500055042 /* CardView.swift in Sources */,
 				5BB058B824D36D3B0064D895 /* SetGame.swift in Sources */,
 				5BB058BA24D3727D0064D895 /* GridLayout.swift in Sources */,
 				C9497D198043D94A6EBE2D56 /* SceneDelegate.swift in Sources */,
 				C9497381E2F705AFFC67EABB /* MainView.swift in Sources */,
 				5BD6230F24D376CE00E4FACD /* SetViewModel.swift in Sources */,
 				5BB058BF24D373420064D895 /* Array+Identifiable.swift in Sources */,
+				5B006F2724D4123C00055042 /* Cardify.swift in Sources */,
 				5BB058BC24D372AA0064D895 /* Grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

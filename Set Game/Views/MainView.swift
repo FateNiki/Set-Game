@@ -13,15 +13,19 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            Grid(viewModel.tableCards) { _ in
-                RoundedRectangle(cornerRadius: 3).fill()
+            Grid(viewModel.tableCards) { card in
+                CardView(card: card)
             }
             Button(action: {
                 self.viewModel.startGame()
             }) {
                 Text("New Game")
             }
-        }.padding()
+        }
+        .padding()
+        .onAppear {
+            self.viewModel.startGame()
+        }
     }
 }
 
