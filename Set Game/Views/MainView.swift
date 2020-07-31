@@ -12,20 +12,36 @@ struct MainView: View {
     @ObservedObject var viewModel: SetGameViewModel
     
     var body: some View {
-        VStack {
-            Grid(viewModel.tableCards) { card in
-                CardView(card: card)
+        NavigationView {
+            VStack {
+                Grid(viewModel.tableCards) { card in
+                    CardView(card: card)
+                }
+                
+                HStack {
+                    Button(action: {
+                        self.viewModel.startGame()
+                    }) {
+                        Text("Add 3 cards")
+                    }
+                    Spacer()
+                    Button(action: {}) {
+                        Text("Set")
+                    }.disabled(true)
+                }
             }
-            Button(action: {
+            .navigationBarTitle("Set Game", displayMode: .inline)
+            .navigationBarItems(trailing: Button (action: {
                 self.viewModel.startGame()
             }) {
-                Text("New Game")
+                Image(systemName: "plus")
+            })
+            .padding()
+            .onAppear {
+                self.viewModel.startGame()
             }
         }
-        .padding()
-        .onAppear {
-            self.viewModel.startGame()
-        }
+
     }
 }
 
