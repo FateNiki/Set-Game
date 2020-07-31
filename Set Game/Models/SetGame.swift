@@ -14,8 +14,8 @@ struct Card: Identifiable {
     let fill: Fill
     let count: Count
     
-    public var id: String { "\(color)_\(shape)_\(fill)_\(count)" }
-    
+    var id: String { "\(color)_\(shape)_\(fill)_\(count)" }
+    var isSelected: Bool = false
     
     enum Color: CaseIterable {
         case red
@@ -43,6 +43,8 @@ struct Card: Identifiable {
 }
 
 struct SetGame {
+    //MARK: - Static field
+
     static let startCountOfCards: Int = 12
     static let additionCountOfCards: Int = 3
     
@@ -60,9 +62,15 @@ struct SetGame {
         return cards.shuffled()
     }
     
+    //MARK: - Cards properties
     private(set) var deckCards: Array<Card> = []
     private(set) var tableCards: Array<Card> = []
     
+    //MARK: - Cards calc properties
+    private var selectedCards: Array<Card> { tableCards.filter { $0.isSelected }}
+
+    
+    //MARK: - Cards methods
     private mutating func pushCards(countOfCards: Int) -> Void {
         let count = min(countOfCards, deckCards.count)
         tableCards.append(contentsOf: deckCards.prefix(count))
@@ -78,5 +86,18 @@ struct SetGame {
         deckCards = Self.allCards
         tableCards = []
         pushCards(countOfCards: Self.startCountOfCards)
+    }
+    
+    mutating func choose(card: Card) -> Void {
+        if let cardIndex = tableCards.firstIndex(matching: card) {
+            if selectedCards.count == 3 && !card.isSelected {
+                tableCards.indices.forEach { index in
+                    tableCards[index].isSelected = false
+                }
+                tableCards[cardIndex].isSelected = true
+            } else {
+                tableCards[cardIndex].isSelected.toggle()
+            }
+        }
     }
 }
