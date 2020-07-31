@@ -16,9 +16,9 @@ struct Cardify: ViewModifier {
             Group {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(Color.white)
-                    .shadow(color: shadowColor, radius: card.isSelected ? 5 : 0)
+                    .shadow(color: shadowAndBorderColor, radius: card.isSelected ? 5 : 0)
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color.accentColor, lineWidth: lineWidth)
+                    .stroke(shadowAndBorderColor, lineWidth: lineWidth)
                 content
             }
         }
@@ -28,7 +28,7 @@ struct Cardify: ViewModifier {
     
     private let cornerRadius: CGFloat = 15.0
     private let lineWidth: CGFloat = 2.0
-    private var shadowColor: Color {
+    private var shadowAndBorderColor: Color {
         switch card.isMatching {
             case true: return Color.green
             case false: return Color.red
