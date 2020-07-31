@@ -20,7 +20,9 @@ struct MainView: View {
                 
                 HStack {
                     Button(action: {
-                        self.viewModel.pushAdditionCards()
+                        withAnimation {
+                              self.viewModel.pushAdditionCards()
+                        }
                     }) {
                         Text("Add 3 cards")
                     }
@@ -32,13 +34,17 @@ struct MainView: View {
             }
             .navigationBarTitle("Set Game", displayMode: .inline)
             .navigationBarItems(trailing: Button (action: {
-                self.viewModel.startGame()
+                withAnimation {
+                    self.viewModel.startGame()
+                }
             }) {
                 Image(systemName: "plus")
             })
             .padding()
             .onAppear {
-                self.viewModel.startGame()
+                withAnimation {
+                    self.viewModel.startGame()
+                }
             }
         }
 
