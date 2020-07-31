@@ -7,8 +7,8 @@
 //
 
 extension Array where Element == Card {
-    internal func isSet() -> Bool {
-        guard self.count == 3 else { return false }
+    internal func isSet() -> Bool? {
+        guard self.count == 3 else { return nil }
         let countMark = Set(self.map{ $0.count }).count
         let shapeMark = Set(self.map{ $0.shape }).count
         let fillMark = Set(self.map{ $0.fill }).count
