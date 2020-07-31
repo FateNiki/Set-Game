@@ -15,7 +15,11 @@ struct MainView: View {
         NavigationView {
             VStack {
                 Grid(viewModel.tableCards) { card in
-                    CardView(card: card)
+                    CardView(card: card).onTapGesture {
+                        withAnimation {
+                            self.viewModel.choose(card: card)
+                        }
+                    }
                 }
                 
                 HStack {
