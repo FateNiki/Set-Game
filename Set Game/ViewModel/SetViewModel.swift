@@ -26,6 +26,7 @@ class SetGameViewModel: ObservableObject {
     }
     
     func choose(card: Card) -> Void {
+        print(#function)
         game.choose(card: card)
     }
 }
